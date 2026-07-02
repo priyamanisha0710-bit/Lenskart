@@ -1,0 +1,157 @@
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+  z-index: 2;
+}
+
+.hero-content-center {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brand-logo-text {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.palm-tree {
+  font-size: 24px;
+}
+
+.campaign-title {
+  font-size: 70px;
+  font-weight: 300;
+  letter-spacing: 8px;
+  margin: 0 0 15px 0;
+  font-family: 'Arial', sans-serif; /* Fallback for the tall thin font */
+  transform: scaleY(1.2); /* Mocking the tall font style */
+}
+
+.est-text {
+  display: flex;
+  gap: 40px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+
+.shop-now-btn {
+  background-color: #5d7599; /* Bluish grey button color */
+  color: white;
+  text-decoration: none;
+  padding: 15px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.shop-now-btn:hover {
+  background-color: #4a5e7d;
+}
+
+/* Carousel UI */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  background: rgba(0,0,0,0.2);
+  width: 40px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-arrow { left: 0; }
+.right-arrow { right: 0; }
+
+.carousel-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #fff;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .hero-banner {
+    height: 300px;
+  }
+  .campaign-title {
+    font-size: 32px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
+  .brand-logo-text {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  .palm-tree {
+    font-size: 16px;
+  }
+  .est-text {
+    gap: 15px;
+    font-size: 11px;
+    margin-bottom: 15px;
+  }
+  .shop-now-btn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
