@@ -15,7 +15,6 @@ function CategoryCard() {
     { name: "Sunglasses", image: reliableUrls[1] },
     { name: "Computer Glasses", image: reliableUrls[2] },
     { name: "Kids Glasses", image: reliableUrls[3] },
-    { name: "Contact Lens", image: reliableUrls[4] },
     { name: "Power Sunglasses", image: reliableUrls[1] }
   ];
 

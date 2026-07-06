@@ -104,6 +104,11 @@
   cursor: pointer;
   text-decoration: none;
   color: #ffffff;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .nav-links {
@@ -119,10 +124,27 @@
   text-decoration: none;
   letter-spacing: 0.5px;
   transition: opacity 0.2s;
+  position: relative;
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 50%;
+  background-color: #00b7c6;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform: translateX(-50%);
 }
 
 .nav-links li a:hover {
-  opacity: 0.8;
+  opacity: 1;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
 }
 
 .nav-right {
@@ -171,6 +193,12 @@
   color: #ffffff; /* White icons */
   cursor: pointer;
   text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-flex;
+}
+
+.nav-icons a:hover, .nav-icons svg:hover {
+  transform: scale(1.2) translateY(-2px);
 }
 .cart-badge {
   position: absolute;

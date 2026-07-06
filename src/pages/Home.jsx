@@ -13,19 +13,40 @@ function Home() {
       <Navbar />
       <Hero />
       <BrowseFrames />
-      <section className="category-section">
-        <div className="container">
-          <h2>Shop by Category</h2>
+      <section className="category-section" style={{ marginTop: '0px', position: 'relative', zIndex: 2 }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <h2 style={{ fontSize: '22px', color: 'var(--primary)', marginBottom: '30px', marginTop: '0px', whiteSpace: 'nowrap' }}>Shop by Category</h2>
+        </div>
+        <div className="container" style={{ marginTop: '5px', marginBottom: '10px' }}>
           <CategoryCard />
         </div>
       </section>
 
       <section className="featured-products-section" style={{ padding: '10px 20px 40px 20px', backgroundColor: '#f9f9f9' }}>
         <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ textAlign: 'center', marginBottom: '30px', fontSize: '28px', color: 'var(--primary)' }}>Trending Now</h2>
-          <div className="products-grid">
+          <div className="marquee-wrapper">
+            <div className="marquee-content">
+              <span>Trending Now</span>
+              <span>Trending Now</span>
+              <span>Trending Now</span>
+              <span>Trending Now</span>
+              <span>Trending Now</span>
+              <span>Trending Now</span>
+            </div>
+            <div className="marquee-content">
+              <span>Trending Now</span>
+              <span>Trending Now</span>
+              <span>Trending Now</span>
+              <span>Trending Now</span>
+              <span>Trending Now</span>
+              <span>Trending Now</span>
+            </div>
+          </div>
+          <div className="products-grid" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '25px' }}>
             {productsData.slice(0, 6).map((product) => (
-              <ProductCard key={product.id} product={product} is3DMode={false} />
+              <div key={product.id} style={{ flex: '1 1 300px', maxWidth: '320px' }}>
+                <ProductCard product={product} is3DMode={false} />
+              </div>
             ))}
           </div>
         </div>

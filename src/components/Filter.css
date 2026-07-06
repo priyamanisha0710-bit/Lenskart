@@ -55,6 +55,11 @@
   font-size: 14px;
   color: var(--primary);
   margin: 0;
+  transition: color 0.3s ease;
+}
+
+.filter-section-title:hover h3, .filter-section-title:hover .filter-icon {
+  color: var(--teal);
 }
 
 .accordion-item {
@@ -67,6 +72,12 @@
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+  color: var(--teal);
+  padding-left: 5px;
 }
 
 .accordion-item:last-child {
@@ -160,6 +171,7 @@ input:checked + .slider:before {
 
 .filter-checkbox:hover {
   color: var(--teal);
+  transform: translateX(5px);
 }
 
 .filter-checkbox input {

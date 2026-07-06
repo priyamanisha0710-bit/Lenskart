@@ -20,7 +20,7 @@ function About() {
           <div className="section-content">
             <h2>Our History</h2>
             <p>
-              Founded in 2010, we started with a simple idea: everyone deserves access to premium quality eyewear without breaking the bank. From a small online startup, we've grown into a global leader in optical technology and fashion. Over the past decade, we've continuously pushed the boundaries of eyewear design and lens manufacturing.
+              Founded in 2010, we started with a simple idea: everyone deserves premium eyewear without breaking the bank. Today, we've grown from a small startup into a global leader pushing the boundaries of optical technology and fashion.
             </p>
           </div>
           <div className="section-image history-image"></div>
@@ -32,11 +32,11 @@ function About() {
             <div className="vm-cards">
               <div className="vm-card">
                 <h3>Our Vision</h3>
-                <p>To revolutionize the eyewear industry by making high-quality, fashionable eyewear accessible to every individual across the globe.</p>
+                <p>Making high-quality, fashionable eyewear accessible to everyone globally.</p>
               </div>
               <div className="vm-card">
                 <h3>Our Mission</h3>
-                <p>To combine state-of-the-art optical technology with cutting-edge fashion, delivering unmatched value and empowering our customers to see the world clearly and beautifully.</p>
+                <p>Combining optical technology with cutting-edge fashion to empower customers to see clearly and beautifully.</p>
               </div>
             </div>
           </div>

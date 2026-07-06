@@ -1,16 +1,8 @@
 .browse-frames-section {
-  padding: 60px 40px;
+  padding: 10px 20px 0px 20px;
   background-color: #f9f9f9;
   text-align: center;
   font-family: 'Inter', sans-serif;
-}
-
-.browse-frames-section .section-title {
-  font-size: 28px;
-  font-weight: 800;
-  color: #333;
-  margin-bottom: 40px;
-  letter-spacing: 0.5px;
 }
 
 .frames-grid {
@@ -33,22 +25,53 @@
   width: 180px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid transparent;
   color: #333;
+  animation: fadeUpFrame 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
+@keyframes fadeUpFrame {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.frame-card:nth-child(1) { animation-delay: 0.1s; }
+.frame-card:nth-child(2) { animation-delay: 0.2s; }
+.frame-card:nth-child(3) { animation-delay: 0.3s; }
+.frame-card:nth-child(4) { animation-delay: 0.4s; }
+.frame-card:nth-child(5) { animation-delay: 0.5s; }
+
 .frame-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 59, 109, 0.15);
   border-color: #003b6d;
   color: #003b6d;
+}
+
+.frame-card:hover .frame-icon {
+  transform: scale(1.15);
+  animation-play-state: paused;
 }
 
 .frame-icon {
   margin-bottom: 15px;
   color: inherit; /* Inherits text color, which turns blue on hover */
   transition: color 0.3s ease;
+  animation: floatFrame 3.5s ease-in-out infinite;
+}
+
+@keyframes floatFrame {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.frame-card:nth-child(even) .frame-icon {
+  animation-delay: 1.75s;
 }
 
 .frame-icon svg {

@@ -30,3 +30,34 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
+/* Marquee Animation (KFC Style) */
+.marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  background-color: transparent;
+  color: var(--primary);
+  padding: 10px 0;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.marquee-content {
+  display: flex;
+  animation: marqueeScroll 15s linear infinite;
+  will-change: transform;
+}
+
+.marquee-content span {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}

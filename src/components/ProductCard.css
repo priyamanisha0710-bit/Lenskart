@@ -5,13 +5,24 @@
   border: 1px solid var(--border-color);
   overflow: hidden;
   font-family: 'Inter', sans-serif;
-  transition: box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
   height: 100%;
+  animation: fadeUpProduct 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+@keyframes fadeUpProduct {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .product-card:hover {
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
 }
 
 .card-image-section {
@@ -49,6 +60,12 @@
   object-fit: contain;
   margin-bottom: 10px;
   transition: transform 0.4s ease-out, filter 0.4s ease-out;
+  animation: floatSmall 3s ease-in-out infinite;
+}
+
+@keyframes floatSmall {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 
 .product-image.effect-3d {
@@ -192,10 +209,13 @@
     height: 12px;
     font-size: 8px;
   }
-  .emi-offers, .discount {
+  .discount {
     display: inline-flex;
     font-size: 9px;
     padding: 2px 4px;
+  }
+  .emi-offers {
+    display: none;
   }
   .price-row {
     flex-wrap: wrap;
@@ -209,7 +229,7 @@
     font-size: 11px;
   }
   .coupon-code {
-    font-size: 9px;
+    display: none;
   }
   .view-similar-btn {
     font-size: 9px;

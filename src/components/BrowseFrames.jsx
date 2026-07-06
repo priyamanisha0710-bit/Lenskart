@@ -93,8 +93,21 @@ const frames = [
 function BrowseFrames() {
   return (
     <section className="browse-frames-section">
+      <div className="marquee-wrapper">
+        <div className="marquee-content">
+          <span>Select Your Frame Shape</span>
+          <span>Select Your Frame Shape</span>
+          <span>Select Your Frame Shape</span>
+          <span>Select Your Frame Shape</span>
+        </div>
+        <div className="marquee-content">
+          <span>Select Your Frame Shape</span>
+          <span>Select Your Frame Shape</span>
+          <span>Select Your Frame Shape</span>
+          <span>Select Your Frame Shape</span>
+        </div>
+      </div>
       <div className="container">
-        <h2 className="section-title">Select Your Frame Shape</h2>
         <div className="frames-grid">
           {frames.map((frame, index) => (
             <Link to={`/products${frame.path}`} className="frame-card" key={index}>
