@@ -181,7 +181,7 @@
 
 .rx-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 15px;
 }
 
@@ -365,4 +365,24 @@
     padding: 12px 20px;
     font-size: 14px;
   }
+  
+  .rx-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .rx-grid input {
+    font-size: 13px;
+    padding: 10px;
+  }
+  
+  .rx-eye-section h4 {
+    text-align: center;
+    font-size: 15px;
+  }
+  
+  .rx-manual-form {
+    padding: 15px;
+  }
 }
+
