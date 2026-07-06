@@ -31,13 +31,17 @@ function Hero() {
       />
 
       <div className="hero-content-center">
-        <h1 className="campaign-title">BEACH CLUB</h1>
-        
-        <div className="est-text">
-          <span>EST.</span>
-          <div className="brand-logo-text">JOHN 🌴 JACOBS</div>
-          <span>2024</span>
-        </div>
+        {currentSlide === 0 && (
+          <>
+            <h1 className="campaign-title">BEACH CLUB</h1>
+            
+            <div className="est-text">
+              <span>EST.</span>
+              <div className="brand-logo-text">JOHN 🌴 JACOBS</div>
+              <span>2024</span>
+            </div>
+          </>
+        )}
 
         <Link to="/products" className="shop-now-btn">
           Shop Now

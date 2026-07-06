@@ -227,3 +227,20 @@
     font-size: 2rem;
   }
 }
+
+@media (max-width: 600px) {
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .stat-box {
+    padding: 15px 10px;
+  }
+  .stat-number {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+  }
+}

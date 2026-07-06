@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import { FaRegHeart, FaStar } from "react-icons/fa";
+import { FaRegHeart, FaHeart, FaStar } from "react-icons/fa";
+import { useWishlist } from "../context/WishlistContext";
 import "./ProductCard.css";
 
 function ProductCard({ product, is3DMode }) {
+  const { isInWishlist, toggleWishlist } = useWishlist();
+
   // If no product is passed, render a generic one to prevent crashing
   const p = product || {
     id: 1,
@@ -16,6 +19,13 @@ function ProductCard({ product, is3DMode }) {
     image: "https://picsum.photos/400/200"
   };
 
+  const isSaved = isInWishlist(p.id);
+
+  const handleHeartClick = (e) => {
+    e.preventDefault();
+    toggleWishlist(p);
+  };
+
   return (
     <Link to={`/product/${p.id}`} className="product-card" style={{ textDecoration: 'none' }}>
       <div className="card-image-section">
@@ -23,7 +33,9 @@ function ProductCard({ product, is3DMode }) {
           <div className="rating-badge">
             ★ {p.rating}
           </div>
-          <FaRegHeart className="heart-icon" />
+          <div onClick={handleHeartClick} style={{ cursor: 'pointer', zIndex: 10 }}>
+            {isSaved ? <FaHeart color="#ff4d4f" className="heart-icon" /> : <FaRegHeart className="heart-icon" />}
+          </div>
         </div>
         
         <img src={p.image} alt={p.name} className={`product-image ${is3DMode ? 'effect-3d' : ''}`} />

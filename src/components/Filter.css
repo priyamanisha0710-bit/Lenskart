@@ -168,3 +168,19 @@ input:checked + .slider:before {
   height: 16px;
   accent-color: var(--teal);
 }
+
+@media (max-width: 900px) {
+  .filter-mobile-wrapper {
+    display: none;
+  }
+  .filter-mobile-wrapper.show {
+    display: block;
+  }
+  .filter-section-title {
+    cursor: pointer;
+    background: #f0fbfc;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+  }
+}

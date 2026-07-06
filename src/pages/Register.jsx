@@ -3,36 +3,25 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-function Login() {
+function Register() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    const savedUser = JSON.parse(localStorage.getItem("user"));
-
-    if (!savedUser) {
-      alert("No account found. Please register first.");
+  const handleRegister = () => {
+    if (name === "" || email === "" || password === "") {
+      alert("Please fill all fields");
       return;
     }
 
-    if (savedUser.email !== email) {
-      alert("No account found with that email");
-      return;
-    }
+    const user = { name, email, password, isVerified: true };
 
-    if (!savedUser.isVerified) {
-      alert("Please verify your account first (check OTP)");
-      return;
-    }
-
-    if (savedUser.password === password) {
-      alert("Login Successful");
-      localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("currentUser", savedUser.email);
-      window.location.href = "/";
-    } else {
-      alert("Invalid Email or Password");
-    }
+    localStorage.setItem("user", JSON.stringify(user));
+    
+    alert("Account created successfully! You can now login.");
+    
+    // redirect to login
+    window.location.href = "/login";
   };
 
   return (
@@ -51,7 +40,21 @@ function Login() {
           boxSizing: "border-box"
         }}
       >
-        <h2>Login</h2>
+        <h2>Create Account</h2>
+
+        <input
+          type="text"
+          placeholder="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          style={{
+            width: "100%",
+            padding: "10px",
+            marginTop: "15px",
+            boxSizing: "border-box",
+            fontSize: "14px"
+          }}
+        />
 
         <input
           type="email"
@@ -82,7 +85,7 @@ function Login() {
         />
 
         <button
-          onClick={handleLogin}
+          onClick={handleRegister}
           style={{
             width: "100%",
             padding: "10px",
@@ -93,9 +96,10 @@ function Login() {
             borderRadius: "6px",
             cursor: "pointer",
             fontSize: "15px",
+            fontWeight: "bold",
           }}
         >
-          Login
+          Sign Up
         </button>
 
         <p
@@ -106,19 +110,17 @@ function Login() {
             lineHeight: "1.6"
           }}
         >
-          Don't have an account?{" "}
+          Already have an account?{" "}
           <Link
-            to="/register"
+            to="/login"
             style={{
               color: "#003b6d",
               textDecoration: "none",
               fontWeight: "bold",
             }}
           >
-            Sign up
+            Login
           </Link>
-          <br />
-          <Link to="/forgot-password" style={{ color: "#003b6d", textDecoration: "none", fontWeight: "bold" }}>Forgot Password?</Link>
         </p>
       </div>
 
@@ -127,4 +129,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

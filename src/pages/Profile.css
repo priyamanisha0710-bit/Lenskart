@@ -1,0 +1,480 @@
+.dashboard-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 40px auto;
+  gap: 30px;
+  padding: 0 20px;
+  font-family: 'Inter', sans-serif;
+  min-height: 60vh;
+}
+
+.dashboard-sidebar {
+  width: 250px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  padding: 20px 0;
+  height: fit-content;
+}
+
+.sidebar-item {
+  padding: 15px 25px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: #555;
+  transition: all 0.2s;
+  border-left: 4px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-icon {
+  font-size: 18px;
+  color: #777;
+  transition: color 0.2s;
+}
+
+.sidebar-item:hover {
+  background: #f9f9f9;
+  color: #003b6d;
+}
+
+.sidebar-item:hover .sidebar-icon {
+  color: #003b6d;
+}
+
+.sidebar-item.active {
+  background: #f0fbfc;
+  color: #00b7c6;
+  border-left-color: #00b7c6;
+  font-weight: 700;
+}
+
+.sidebar-item.active .sidebar-icon {
+  color: #00b7c6;
+}
+
+.logout-item {
+  color: #d32f2f;
+}
+.logout-item .sidebar-icon {
+  color: #d32f2f;
+}
+.logout-item:hover {
+  color: #c62828;
+  background: #fff5f5;
+}
+.logout-item:hover .sidebar-icon {
+  color: #c62828;
+}
+
+.prof-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  color: #333;
+  background-color: #fff;
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+
+.prof-input:focus {
+  outline: none;
+  border-color: #00b7c6;
+  box-shadow: 0 0 0 3px rgba(0, 183, 198, 0.1);
+}
+
+.prof-input:disabled {
+  background-color: #f1f3f5;
+  color: #666;
+  cursor: not-allowed;
+  border-color: #eee;
+}
+
+.dashboard-content {
+  flex: 1;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  padding: 40px;
+}
+
+/* Modals & Layouts */
+.dash-header {
+  font-size: 24px;
+  color: #003b6d;
+  margin-top: 0;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+/* Prescription Manager */
+.rx-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #fafafa;
+}
+
+.rx-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.rx-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.rx-form-group label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.rx-form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background: #00b7c6;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: #0099a8;
+}
+
+.btn-secondary {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #f5f5f5;
+}
+
+.upload-area {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: all 0.2s;
+}
+
+.upload-area:hover {
+  border-color: #00b7c6;
+  background: #f0fbfc;
+}
+
+/* Order History */
+.order-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.order-status {
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.order-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #eee;
+  z-index: 1;
+}
+
+.timeline-step {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 33%;
+}
+
+.timeline-step .dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ccc;
+  margin: 7px auto;
+  border: 4px solid #fff;
+}
+
+.timeline-step.active .dot {
+  background: #00b7c6;
+}
+
+.timeline-step p {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Custom Modals inside Dashboard */
+.dash-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.dash-modal {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Timeline Extended */
+.timeline-extended {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  position: relative;
+  text-align: center;
+}
+
+.timeline-extended::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  right: 30px;
+  height: 2px;
+  background: #eee;
+  z-index: 1;
+}
+
+.timeline-extended .timeline-step {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.timeline-extended .dot {
+  width: 30px;
+  height: 30px;
+  background: #eee;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.timeline-extended .timeline-step.active .dot {
+  background: #4CAF50;
+}
+
+.timeline-extended p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+}
+
+.timeline-extended span {
+  display: block;
+  font-size: 11px;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* Courier Section */
+.courier-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.courier-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid #eaeaea;
+}
+
+@media (max-width: 900px) {
+  .dashboard-container {
+    flex-direction: column;
+    padding: 10px;
+    margin: 20px auto;
+  }
+  .dashboard-sidebar {
+    width: 100%;
+  }
+  .dashboard-content {
+    padding: 20px;
+  }
+  .rx-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .dash-modal {
+    padding: 15px 15px;
+    max-height: 90vh;
+    overflow-y: auto;
+    width: 85%;
+    margin: 0 auto;
+  }
+  
+  /* Vertical Timeline for Mobile */
+  .timeline-extended {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .timeline-extended::before {
+    top: 10px;
+    bottom: 10px;
+    left: 11px; /* Center of 24px dot is 12px */
+    width: 2px;
+    height: auto;
+  }
+  .timeline-extended .timeline-step {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+  }
+  .timeline-extended .dot {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+    margin: 0 12px 0 0;
+    flex-shrink: 0;
+  }
+  .timeline-extended p {
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+  .timeline-extended span {
+    font-size: 10px;
+    display: inline-block;
+    margin-left: 8px;
+  }
+  
+  .courier-section {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+
+  .courier-info {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .courier-info h4 {
+    font-size: 14px !important;
+  }
+  
+  .courier-info p {
+    font-size: 11px !important;
+  }
+  
+  .courier-info .btn-secondary {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+  
+  /* Order Card Mobile Fixes */
+  .order-card {
+    padding: 15px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+  
+  .order-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .order-header > div:last-child {
+    text-align: left !important;
+  }
+  
+  .order-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .order-actions button {
+    font-size: 12px;
+    padding: 8px 12px;
+    flex: 1 1 auto;
+  }
+}

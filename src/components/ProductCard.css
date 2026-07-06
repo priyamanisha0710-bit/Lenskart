@@ -1,4 +1,5 @@
 .product-card {
+  display: block;
   background: white;
   border-radius: 8px;
   border: 1px solid var(--border-color);
@@ -6,6 +7,7 @@
   font-family: 'Inter', sans-serif;
   transition: box-shadow 0.3s ease;
   cursor: pointer;
+  height: 100%;
 }
 
 .product-card:hover {
@@ -170,19 +172,54 @@
   .product-image {
     height: 100px;
   }
+  .card-image-section {
+    padding: 10px;
+  }
   .card-details {
     padding: 10px;
   }
   .brand-name {
     font-size: 12px;
+    margin-bottom: 5px;
+  }
+  .size-badge {
+    font-size: 9px;
+    padding: 2px 4px;
+    margin-bottom: 8px;
+  }
+  .size-char {
+    width: 12px;
+    height: 12px;
+    font-size: 8px;
+  }
+  .emi-offers, .discount {
+    display: inline-flex;
+    font-size: 9px;
+    padding: 2px 4px;
+  }
+  .price-row {
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 5px;
   }
   .current-price {
     font-size: 14px;
   }
-  .emi-offers {
-    font-size: 9px;
+  .old-price {
+    font-size: 11px;
   }
   .coupon-code {
     font-size: 9px;
+  }
+  .view-similar-btn {
+    font-size: 9px;
+    padding: 3px 6px;
+  }
+  .rating-badge {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+  .heart-icon {
+    font-size: 14px;
   }
 }

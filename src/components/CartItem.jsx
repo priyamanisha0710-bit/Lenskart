@@ -5,25 +5,42 @@ function CartItem({ item }) {
   const { removeFromCart, updateQuantity } = useCart();
 
   return (
-    <div style={{ display: "flex", alignItems: "center", padding: "15px 0", borderBottom: "1px solid #f0f0f0" }}>
-      <img src={item.image} alt={item.name} style={{ width: "100px", height: "60px", objectFit: "contain", marginRight: "20px" }} />
+    <div className="cart-item">
+      <img src={item.image} alt={item.name} className="cart-item-image" />
       
-      <div style={{ flex: 1 }}>
-        <h3 style={{ fontSize: "16px", marginBottom: "5px" }}>{item.brand} - {item.name}</h3>
-        <p style={{ color: "#666", fontSize: "14px" }}>Size: {item.size}</p>
+      <div className="cart-item-details">
+        <h3 className="cart-item-title">{item.brand} - {item.name}</h3>
+        <p className="cart-item-size">Size: {item.size}</p>
+        {item.lensDetails && (
+          <div style={{ marginTop: 5 }}>
+            <p className="cart-item-lenses">
+              Lenses: {item.lensDetails.type.title} ({item.lensDetails.package.title})
+            </p>
+            {item.lensDetails.surcharge > 0 && (
+              <p className="cart-item-surcharge">
+                + High Power Surcharge
+              </p>
+            )}
+            {item.lensDetails.prescription && (
+              <p className="cart-item-prescription">
+                Prescription: {item.lensDetails.prescription.method === 'later' ? 'Provide Later' : 'Provided'}
+              </p>
+            )}
+          </div>
+        )}
       </div>
       
-      <div style={{ display: "flex", alignItems: "center", gap: "10px", marginRight: "30px" }}>
-        <button onClick={() => updateQuantity(item.id, -1)} style={{ padding: "5px 10px", border: "1px solid #ddd", background: "#fff", cursor: "pointer" }}>-</button>
+      <div className="cart-item-quantity">
+        <button onClick={() => updateQuantity(item.cartItemId, -1)}>-</button>
         <span>{item.quantity}</span>
-        <button onClick={() => updateQuantity(item.id, 1)} style={{ padding: "5px 10px", border: "1px solid #ddd", background: "#fff", cursor: "pointer" }}>+</button>
+        <button onClick={() => updateQuantity(item.cartItemId, 1)}>+</button>
       </div>
 
-      <div style={{ width: "100px", fontWeight: "bold" }}>
+      <div className="cart-item-price">
         ₹{item.price * item.quantity}
       </div>
 
-      <button onClick={() => removeFromCart(item.id)} style={{ background: "none", border: "none", color: "red", cursor: "pointer", fontSize: "16px" }}>
+      <button onClick={() => removeFromCart(item.cartItemId)} className="cart-item-delete">
         <FaTrash />
       </button>
     </div>

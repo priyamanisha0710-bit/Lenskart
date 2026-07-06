@@ -1,15 +1,20 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { productsData } from "../data/products";
 import { useCart } from "../context/CartContext";
+import SelectLensesModal from "../components/SelectLensesModal";
 import "./ProductDetails.css";
 
 function ProductDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const product = productsData.find(p => p.id === parseInt(id));
   const { addToCart } = useCart();
   const [added, setAdded] = useState(false);
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [pendingAction, setPendingAction] = useState(null); // 'cart' or 'buy'
 
   const [activeIndex, setActiveIndex] = useState(0);
   const filters = ['', 'grayscale(100%)', 'sepia(100%)'];
@@ -26,10 +31,22 @@ function ProductDetails() {
     );
   }
 
-  const handleAddToCart = () => {
+  // Determine if product needs lenses (only eyeglasses or products without explicit type acting as frames)
+  const needsLenses = product.type === 'eyeglasses' || !product.type;
+
+  const handleInitialAction = (action) => {
+    navigate(`/select-lenses/${product.id}?action=${action}`);
+  };
+
+  const executeAction = (action, lensData) => {
     addToCart(product);
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000); // Reset after 2s
+
+    if (action === 'buy') {
+      navigate('/checkout');
+    } else {
+      setAdded(true);
+      setTimeout(() => setAdded(false), 2000);
+    }
   };
 
   return (
@@ -93,19 +110,16 @@ function ProductDetails() {
             <div style={{ display: 'flex', gap: '15px' }}>
               <button 
                 className="add-to-cart-btn" 
-                onClick={handleAddToCart}
-                style={{ backgroundColor: added ? '#4CAF50' : 'var(--teal)', flex: 1 }}
+                onClick={() => handleInitialAction('cart')}
+                style={{ backgroundColor: '#003b6d', flex: 1, fontSize: '15px' }}
               >
-                {added ? "Added to Cart ✓" : "Add To Cart"}
+                Select Lenses & Add to Cart
               </button>
 
               <button 
                 className="add-to-cart-btn buy-now-btn" 
-                onClick={() => {
-                  addToCart(product);
-                  window.location.href = '/checkout';
-                }}
-                style={{ backgroundColor: '#000000', flex: 1 }}
+                onClick={() => handleInitialAction('buy')}
+                style={{ backgroundColor: '#003b6d', flex: 1 }}
               >
                 Buy Now
               </button>

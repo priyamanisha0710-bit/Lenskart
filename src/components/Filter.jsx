@@ -5,6 +5,8 @@ function Filter({ filters, onApplyFilters, sortOrder, onSortChange, onTry3dToggl
   const [openAccordion, setOpenAccordion] = useState("Gender"); // Default open
   const [localFilters, setLocalFilters] = useState(filters);
 
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
+
   // Sync if parent filters change (e.g. initial load or clearing)
   useEffect(() => {
     setLocalFilters(filters);
@@ -61,31 +63,33 @@ function Filter({ filters, onApplyFilters, sortOrder, onSortChange, onTry3dToggl
         </label>
       </div>
 
-      <div className="filter-section-title">
-        <span className="filter-icon">▽</span>
+      <div className="filter-section-title" onClick={() => setShowMobileFilters(!showMobileFilters)} style={{ cursor: 'pointer' }}>
+        <span className="filter-icon">{showMobileFilters ? '△' : '▽'}</span>
         <h3>Filters</h3>
       </div>
 
-      <div className="accordion-list">
-        <div className="accordion-item" onClick={() => toggleAccordion("Gender")}>
-          <span>Gender</span>
-          <span className="chevron">{openAccordion === "Gender" ? "⌃" : "⌄"}</span>
-        </div>
-        {openAccordion === "Gender" && renderCheckboxes("gender", ["Men", "Women", "Unisex"])}
+      <div className={`filter-mobile-wrapper ${showMobileFilters ? 'show' : ''}`}>
+        <div className="accordion-list">
+          <div className="accordion-item" onClick={() => toggleAccordion("Gender")}>
+            <span>Gender</span>
+            <span className="chevron">{openAccordion === "Gender" ? "⌃" : "⌄"}</span>
+          </div>
+          {openAccordion === "Gender" && renderCheckboxes("gender", ["Men", "Women", "Unisex"])}
 
-        <div className="accordion-item" onClick={() => toggleAccordion("Brand")}>
-          <span>Brand</span>
-          <span className="chevron">{openAccordion === "Brand" ? "⌃" : "⌄"}</span>
-        </div>
-        {openAccordion === "Brand" && renderCheckboxes("brand", ["John Jacobs", "Lenskart Air", "OWNDAYS", "Vincent Chase"])}
+          <div className="accordion-item" onClick={() => toggleAccordion("Brand")}>
+            <span>Brand</span>
+            <span className="chevron">{openAccordion === "Brand" ? "⌃" : "⌄"}</span>
+          </div>
+          {openAccordion === "Brand" && renderCheckboxes("brand", ["John Jacobs", "Lenskart Air", "OWNDAYS", "Vincent Chase"])}
 
-        <div className="accordion-item" onClick={() => toggleAccordion("Shape")}>
-          <span>Shape & Style</span>
-          <span className="chevron">{openAccordion === "Shape" ? "⌃" : "⌄"}</span>
+          <div className="accordion-item" onClick={() => toggleAccordion("Shape")}>
+            <span>Shape & Style</span>
+            <span className="chevron">{openAccordion === "Shape" ? "⌃" : "⌄"}</span>
+          </div>
+          {openAccordion === "Shape" && renderCheckboxes("shape", ["Rectangle", "Round", "Aviator", "Wayfarer", "Cat Eye", "Square", "Oval"])}
         </div>
-        {openAccordion === "Shape" && renderCheckboxes("shape", ["Rectangle", "Round", "Aviator", "Wayfarer", "Cat Eye", "Square", "Oval"])}
+        <button className="apply-btn" onClick={() => onApplyFilters(localFilters)}>View Results</button>
       </div>
-      <button className="apply-btn" onClick={() => onApplyFilters(localFilters)}>View Results</button>
     </div>
   );
 }

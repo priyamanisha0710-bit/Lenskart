@@ -14,7 +14,7 @@
 }
 
 .cart-details {
-  flex: 1;
+  flex: 1;                    
 }
 
 .cart-details h3 {
@@ -32,7 +32,7 @@
   gap: 10px;
   margin-bottom: 10px;
 }
-
+ 
 .remove-btn {
   background-color: #ff4d4f;
   color: white;

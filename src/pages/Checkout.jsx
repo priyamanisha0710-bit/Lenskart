@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -7,6 +7,8 @@ import "./Checkout.css";
 function Checkout() {
   const { cartItems, totalPrice, clearCart } = useCart();
   const [paymentMethod, setPaymentMethod] = useState("gpay");
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [paymentStatus, setPaymentStatus] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,15 +16,43 @@ function Checkout() {
       alert("Your cart is empty!");
       return;
     }
-    // Simulate order placement
-    clearCart();
-    window.location.href = "/order-confirmed";
+    
+    // Simulate secure payment process
+    setIsProcessing(true);
+    setPaymentStatus("Initiating Secure Connection...");
+    
+    setTimeout(() => {
+      setPaymentStatus("Verifying Payment Details...");
+    }, 1000);
+    
+    setTimeout(() => {
+      setPaymentStatus("Payment Successful!");
+    }, 2500);
+
+    setTimeout(() => {
+      clearCart();
+      window.location.href = "/order-confirmed";
+    }, 3500);
   };
 
   return (
     <div className="page-wrapper">
       <Navbar />
       
+      {/* Payment Processing Modal */}
+      {isProcessing && (
+        <div className="payment-modal-overlay">
+          <div className="payment-modal">
+            <div className="spinner"></div>
+            <h2 style={{ marginTop: 20 }}>Processing Payment</h2>
+            <p style={{ color: '#666', marginTop: 10 }}>{paymentStatus}</p>
+            <div className="secure-lock">
+              🔒 128-bit Secure SSL Connection
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="checkout-container">
         <h1>Checkout</h1>
 
@@ -56,7 +86,7 @@ function Checkout() {
             </section>
 
             <section className="checkout-section">
-              <h2>2. Payment Method</h2>
+              <h2>2. Secure Payment Method</h2>
               
               <label className={`payment-option ${paymentMethod === 'gpay' ? 'selected' : ''}`}>
                 <input 
@@ -72,19 +102,6 @@ function Checkout() {
                 </span>
               </label>
 
-              <label className={`payment-option ${paymentMethod === 'cod' ? 'selected' : ''}`}>
-                <input 
-                  type="radio" 
-                  name="payment" 
-                  value="cod" 
-                  checked={paymentMethod === "cod"}
-                  onChange={() => setPaymentMethod("cod")}
-                />
-                <span className="payment-label">
-                  Cash on Delivery (COD)
-                </span>
-              </label>
-
               <label className={`payment-option ${paymentMethod === 'card' ? 'selected' : ''}`}>
                 <input 
                   type="radio" 
@@ -97,10 +114,38 @@ function Checkout() {
                   Credit / Debit Card
                 </span>
               </label>
+              
+              {paymentMethod === 'card' && (
+                <div style={{ marginTop: 15, padding: 15, background: '#f9f9f9', borderRadius: 8, border: '1px solid #eee' }}>
+                   <div className="form-group">
+                     <input type="text" placeholder="Card Number" maxLength="16" required style={{ width: '100%', padding: 10, borderRadius: 5, border: '1px solid #ccc' }} />
+                   </div>
+                   <div style={{ display: 'flex', gap: 15, marginTop: 10 }}>
+                     <input type="text" placeholder="MM/YY" maxLength="5" required style={{ width: '50%', padding: 10, borderRadius: 5, border: '1px solid #ccc' }} />
+                     <input type="password" placeholder="CVV" maxLength="3" required style={{ width: '50%', padding: 10, borderRadius: 5, border: '1px solid #ccc' }} />
+                   </div>
+                </div>
+              )}
+
+              <label className={`payment-option ${paymentMethod === 'cod' ? 'selected' : ''}`} style={{ marginTop: paymentMethod === 'card' ? 15 : 0 }}>
+                <input 
+                  type="radio" 
+                  name="payment" 
+                  value="cod" 
+                  checked={paymentMethod === "cod"}
+                  onChange={() => setPaymentMethod("cod")}
+                />
+                <span className="payment-label">
+                  Cash on Delivery (COD)
+                </span>
+              </label>
 
             </section>
 
-            <button type="submit" className="place-order-btn">Place Order</button>
+            <button type="submit" className="place-order-btn">Secure Checkout</button>
+            <p style={{ textAlign: 'center', fontSize: 12, color: '#888', marginTop: 10 }}>
+               🔒 Payments are secured by 128-bit SSL encryption.
+            </p>
           </form>
 
           <aside className="checkout-summary">
@@ -111,7 +156,24 @@ function Checkout() {
                   <img src={item.image} alt={item.name} />
                   <div>
                     <h4>{item.name}</h4>
-                    <p>Qty: {item.quantity}</p>
+                    <p style={{ margin: "5px 0", fontSize: "13px" }}>Qty: {item.quantity}</p>
+                    {item.lensDetails && (
+                      <div style={{ marginTop: 5 }}>
+                        <p style={{ color: "#00b7c6", fontSize: "12px", margin: "2px 0", fontWeight: 'bold' }}>
+                          + {item.lensDetails.type.title}
+                        </p>
+                        {item.lensDetails.surcharge > 0 && (
+                          <p style={{ color: "#d32f2f", fontSize: "11px", margin: "2px 0", fontWeight: 'bold' }}>
+                            + High Power Surcharge
+                          </p>
+                        )}
+                        {item.lensDetails.prescription && (
+                          <p style={{ color: "#888", fontSize: "11px", margin: "2px 0" }}>
+                            Rx: {item.lensDetails.prescription.method === 'later' ? 'Provide Later' : 'Provided'}
+                          </p>
+                        )}
+                      </div>
+                    )}
                   </div>
                   <span>₹{item.price * item.quantity}</span>
                 </div>

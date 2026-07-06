@@ -6,25 +6,30 @@ export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product) => {
+    // Generate a unique ID for the cart item based on product ID and selected lenses
+    const uniqueCartId = product.lensDetails 
+      ? `${product.id}-${product.lensDetails.type.id}-${product.lensDetails.package.id}` 
+      : product.id;
+      
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find(item => item.id === product.id);
+      const existingItem = prevItems.find(item => item.cartItemId === uniqueCartId);
       if (existingItem) {
         return prevItems.map(item =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.cartItemId === uniqueCartId ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
-      return [...prevItems, { ...product, quantity: 1 }];
+      return [...prevItems, { ...product, cartItemId: uniqueCartId, quantity: 1 }];
     });
   };
 
-  const removeFromCart = (productId) => {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
+  const removeFromCart = (cartItemId) => {
+    setCartItems(prevItems => prevItems.filter(item => item.cartItemId !== cartItemId));
   };
 
-  const updateQuantity = (productId, change) => {
+  const updateQuantity = (cartItemId, change) => {
     setCartItems((prevItems) => {
       return prevItems.map(item => {
-        if (item.id === productId) {
+        if (item.cartItemId === cartItemId) {
           const newQty = item.quantity + change;
           return newQty > 0 ? { ...item, quantity: newQty } : item;
         }
