@@ -1,29 +1,27 @@
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import BrowseFrames from "../components/BrowseFrames";
 import CategoryCard from "../components/CategoryCard";
 import ProductCard from "../components/ProductCard";
+import TrendingVideos from "../components/TrendingVideos";
+import PromoBanner from "../components/PromoBanner";
+import CollectionsGrid from "../components/CollectionsGrid";
 import { productsData } from "../data/products";
 import "./ProductsLayout.css"; // For .products-grid styles
 import Footer from "../components/Footer";
 
 function Home() {
+  const [visibleCount, setVisibleCount] = useState(6);
+  
   return (
     <>
       <Navbar />
       <Hero />
       <BrowseFrames />
-      <section className="category-section" style={{ marginTop: '0px', position: 'relative', zIndex: 2 }}>
-        <div className="container" style={{ textAlign: 'center' }}>
-          <h2 style={{ fontSize: '22px', color: 'var(--primary)', marginBottom: '30px', marginTop: '0px', whiteSpace: 'nowrap' }}>Shop by Category</h2>
-        </div>
-        <div className="container" style={{ marginTop: '5px', marginBottom: '10px' }}>
-          <CategoryCard />
-        </div>
-      </section>
 
-      <section className="featured-products-section" style={{ padding: '10px 20px 40px 20px', backgroundColor: '#f9f9f9' }}>
-        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <section className="featured-products-section" style={{ backgroundColor: '#f9f9f9' }}>
+        <div style={{ maxWidth: '100%', margin: '0 auto', padding: '0 20px' }} className="home-content-wrapper">
           <div className="marquee-wrapper">
             <div className="marquee-content">
               <span>Trending Now</span>
@@ -42,13 +40,40 @@ function Home() {
               <span>Trending Now</span>
             </div>
           </div>
-          <div className="products-grid" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '25px' }}>
-            {productsData.slice(0, 6).map((product) => (
-              <div key={product.id} style={{ flex: '1 1 300px', maxWidth: '320px' }}>
-                <ProductCard product={product} is3DMode={false} />
-              </div>
+          
+          <TrendingVideos />
+          <PromoBanner />
+          <CollectionsGrid />
+
+          <div className="products-grid">
+            {productsData.slice(0, visibleCount).map((product) => (
+              <ProductCard key={product.id} product={product} is3DMode={false} />
             ))}
           </div>
+          
+          {visibleCount < productsData.length && (
+            <div style={{ textAlign: 'center', marginTop: '40px' }}>
+              <button 
+                onClick={() => setVisibleCount(prev => prev + 6)}
+                style={{
+                  backgroundColor: '#003b6d',
+                  color: 'white',
+                  padding: '12px 40px',
+                  border: 'none',
+                  borderRadius: '30px',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 15px rgba(0,59,109,0.2)',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseOver={(e) => e.target.style.transform = 'translateY(-2px)'}
+                onMouseOut={(e) => e.target.style.transform = 'translateY(0)'}
+              >
+                Learn More
+              </button>
+            </div>
+          )}
         </div>
       </section>
 

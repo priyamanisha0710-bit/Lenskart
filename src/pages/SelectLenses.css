@@ -20,6 +20,9 @@
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   padding: 40px;
+  animation: slideUpFade 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .lens-summary-area {
@@ -31,6 +34,16 @@
   height: fit-content;
   position: sticky;
   top: 40px;
+  animation: slideUpFade 0.6s ease-out 0.2s forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes slideUpFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .step-indicator {
@@ -76,19 +89,36 @@
   border-radius: 10px;
   padding: 20px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   background: #fff;
+  animation: fadeUpOption 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
 }
+
+@keyframes fadeUpOption {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.option-card:nth-child(1) { animation-delay: 0.1s; }
+.option-card:nth-child(2) { animation-delay: 0.2s; }
+.option-card:nth-child(3) { animation-delay: 0.3s; }
 
 .option-card:hover {
   border-color: #00b7c6;
   background: #f0fbfc;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 183, 198, 0.15);
 }
 
 .option-card.selected {
   border-color: #00b7c6;
   background: #e6f7f8;
   box-shadow: 0 4px 12px rgba(0, 183, 198, 0.15);
+  transform: scale(1.02);
 }
 
 .option-header {

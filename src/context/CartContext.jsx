@@ -5,20 +5,22 @@ const CartContext = createContext();
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (product) => {
-    // Generate a unique ID for the cart item based on product ID and selected lenses
-    const uniqueCartId = product.lensDetails 
-      ? `${product.id}-${product.lensDetails.type.id}-${product.lensDetails.package.id}` 
-      : product.id;
+  const addToCart = (product, qty = 1) => {
+    // Generate a unique ID for the cart item based on product ID, selected lenses, and selected color
+    const uniqueCartId = product.lensDetails
+      ? `${product.id}-${product.lensDetails.type.id}-${product.lensDetails.package.id}`
+      : product.selectedColor
+        ? `${product.id}-${product.selectedColor}`
+        : product.id;
       
     setCartItems((prevItems) => {
       const existingItem = prevItems.find(item => item.cartItemId === uniqueCartId);
       if (existingItem) {
         return prevItems.map(item =>
-          item.cartItemId === uniqueCartId ? { ...item, quantity: item.quantity + 1 } : item
+          item.cartItemId === uniqueCartId ? { ...item, quantity: item.quantity + qty } : item
         );
       }
-      return [...prevItems, { ...product, cartItemId: uniqueCartId, quantity: 1 }];
+      return [...prevItems, { ...product, cartItemId: uniqueCartId, quantity: qty }];
     });
   };
 

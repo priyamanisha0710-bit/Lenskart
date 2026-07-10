@@ -99,7 +99,7 @@
 .place-order-btn {
   width: 100%;
   padding: 15px;
-  background-color: #000;
+  background-color: #003b6d;
   color: white;
   font-size: 18px;
   font-weight: bold;
@@ -110,7 +110,7 @@
 }
 
 .place-order-btn:hover {
-  background-color: #333;
+  background-color: #002c52;
 }
 
 .checkout-summary {

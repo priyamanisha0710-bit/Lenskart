@@ -19,8 +19,12 @@ function Filter({ filters, onApplyFilters, sortOrder, onSortChange, onTry3dToggl
   const handleCheckboxChange = (category, value) => {
     setLocalFilters(prev => {
       const currentValues = prev[category] || [];
-      const newValues = currentValues.includes(value) ? [] : [value];
-      return { ...prev, [category]: newValues };
+      const newValues = currentValues.includes(value) 
+        ? currentValues.filter(v => v !== value)
+        : [...currentValues, value];
+      const updatedFilters = { ...prev, [category]: newValues };
+      onApplyFilters(updatedFilters); // Apply immediately
+      return updatedFilters;
     });
   };
 

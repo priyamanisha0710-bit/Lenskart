@@ -35,7 +35,13 @@ function Cart() {
                 </h3>
                 <button 
                   className="cart-checkout-btn"
-                  onClick={() => window.location.href = '/checkout'}
+                  onClick={() => {
+                    if (cartItems.length > 0) {
+                      window.location.href = `/select-lenses/${cartItems[0].id}?action=buy`;
+                    } else {
+                      window.location.href = '/checkout';
+                    }
+                  }}
                 >
                   Proceed to Checkout
                 </button>

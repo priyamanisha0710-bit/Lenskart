@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
@@ -13,32 +13,38 @@ import ForgotPassword from "./pages/ForgotPassword";
 import VerifyOTP from "./pages/VerifyOTP";
 import Profile from "./pages/Profile";
 import ChangePassword from "./pages/ChangePassword";
+import Stores from "./pages/Stores";
 
 import SelectLenses from "./pages/SelectLenses";
-
 import Analytics from "./pages/Analytics";
 import Wishlist from "./pages/Wishlist";
+import TryAtHome from "./pages/TryAtHome";
 
 function App() {
+  const location = useLocation();
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/products" element={<Products />} />
-      <Route path="/product/:id" element={<ProductDetails />} />
-      <Route path="/select-lenses/:id" element={<SelectLenses />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/checkout" element={<Checkout />} />
-      <Route path="/order-confirmed" element={<OrderConfirmed />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/verify-otp" element={<VerifyOTP />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/change-password" element={<ChangePassword />} />
-      <Route path="/analytics" element={<Analytics />} />
-      <Route path="/wishlist" element={<Wishlist />} />
-    </Routes>
+    <div key={location.pathname + location.search} className="page-transition-wrapper">
+      <Routes location={location}>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/select-lenses/:id" element={<SelectLenses />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order-confirmed" element={<OrderConfirmed />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/verify-otp" element={<VerifyOTP />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/analytics" element={<Analytics />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/try-at-home" element={<TryAtHome />} />
+        <Route path="/stores" element={<Stores />} />
+      </Routes>
+    </div>
   );
 }
 

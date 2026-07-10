@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import "./Login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -39,18 +40,7 @@ function Login() {
     <>
       <Navbar />
 
-      <div
-        style={{
-          maxWidth: "400px",
-          width: "90%",
-          margin: "40px auto",
-          padding: "20px",
-          background: "#fff",
-          borderRadius: "10px",
-          boxShadow: "0 2px 10px rgba(0,0,0,.2)",
-          boxSizing: "border-box"
-        }}
-      >
+      <div className="login-container">
         <h2>Login</h2>
 
         <input
@@ -58,13 +48,7 @@ function Login() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "10px",
-            marginTop: "15px",
-            boxSizing: "border-box",
-            fontSize: "14px"
-          }}
+          className="login-input"
         />
 
         <input
@@ -72,29 +56,10 @@ function Login() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "10px",
-            marginTop: "15px",
-            boxSizing: "border-box",
-            fontSize: "14px"
-          }}
+          className="login-input"
         />
 
-        <button
-          onClick={handleLogin}
-          style={{
-            width: "100%",
-            padding: "10px",
-            marginTop: "20px",
-            background: "#003b6d",
-            color: "#fff",
-            border: "none",
-            borderRadius: "6px",
-            cursor: "pointer",
-            fontSize: "15px",
-          }}
-        >
+        <button onClick={handleLogin} className="login-btn">
           Login
         </button>
 

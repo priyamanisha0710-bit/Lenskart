@@ -1,0 +1,133 @@
+.trending-videos-container {
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+
+.trending-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.trending-videos-title {
+  color: #000042;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.trending-videos-scroll {
+  display: flex;
+  overflow-x: auto;
+  width: 100%;
+  padding: 0 20px 20px 20px;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+}
+
+.trending-videos-scroll::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
+
+.trending-videos-track {
+  display: flex;
+  gap: 15px;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.carousel-button:hover {
+  background: #f0f0f0;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-button.left {
+  left: 10px;
+}
+
+.carousel-button.right {
+  right: 10px;
+}
+
+.trending-video-card {
+  position: relative;
+  min-width: 200px;
+  width: 200px;
+  height: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Dim all cards when track is hovered */
+.trending-videos-track:hover .trending-video-card {
+  opacity: 0.6;
+  filter: grayscale(30%);
+}
+
+/* Highlight and expand the hovered card */
+.trending-videos-track .trending-video-card:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  width: 260px;
+  min-width: 260px;
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.trending-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #f0f0f0;
+}
+
+.trending-video-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 15px 15px 15px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .trending-video-card {
+    min-width: 160px;
+    width: 160px;
+    height: 240px;
+  }
+  .trending-videos-title {
+    font-size: 20px;
+  }
+}

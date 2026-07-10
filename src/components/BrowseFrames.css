@@ -60,9 +60,10 @@
 
 .frame-icon {
   margin-bottom: 15px;
-  color: inherit; /* Inherits text color, which turns blue on hover */
-  transition: color 0.3s ease;
+  transition: transform 0.3s ease;
   animation: floatFrame 3.5s ease-in-out infinite;
+  width: 140px;
+  height: 80px;
 }
 
 @keyframes floatFrame {
@@ -74,8 +75,18 @@
   animation-delay: 1.75s;
 }
 
-.frame-icon svg {
+.frame-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
+  transition: transform 0.4s ease;
+  mix-blend-mode: multiply;
+  filter: contrast(1.1) brightness(1.05);
+}
+
+.frame-card:hover .frame-image {
+  transform: scale(1.15);
 }
 
 .frame-name {
@@ -98,9 +109,10 @@
     padding: 20px 15px;
   }
   
-  .frame-icon svg {
-    width: 80px;
-    height: 32px;
+  .frame-icon {
+    width: 100px;
+    height: 60px;
+    border-radius: 12px;
   }
   
   .frame-name {
@@ -110,7 +122,10 @@
 
 @media (max-width: 600px) {
   .browse-frames-section {
-    padding: 20px 10px;
+    padding: 20px 0;
+  }
+  .browse-frames-section .container {
+    padding: 0;
   }
   .browse-frames-section .section-title {
     font-size: 16px;
@@ -138,11 +153,9 @@
   }
   .frame-icon {
     margin-bottom: 8px;
-  }
-  .frame-icon svg {
-    width: 38px;
-    height: 16px;
-    margin: 0 auto;
+    width: 60px;
+    height: 40px;
+    border-radius: 8px;
   }
   .frame-name {
     font-size: 9px;

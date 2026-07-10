@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { FaRegHeart, FaHeart, FaStar } from "react-icons/fa";
 import { useWishlist } from "../context/WishlistContext";
+import { useCart } from "../context/CartContext";
 import "./ProductCard.css";
 
 function ProductCard({ product, is3DMode }) {
   const { isInWishlist, toggleWishlist } = useWishlist();
+  const { addToCart } = useCart();
 
   // If no product is passed, render a generic one to prevent crashing
   const p = product || {
@@ -25,7 +27,7 @@ function ProductCard({ product, is3DMode }) {
     e.preventDefault();
     toggleWishlist(p);
   };
-
+  
   return (
     <Link to={`/product/${p.id}`} className="product-card" style={{ textDecoration: 'none' }}>
       <div className="card-image-section">
@@ -41,18 +43,31 @@ function ProductCard({ product, is3DMode }) {
         <img src={p.image} alt={p.name} className={`product-image ${is3DMode ? 'effect-3d' : ''}`} />
         
         <div className="image-bottom-row">
-          <button className="view-similar-btn" onClick={(e) => e.preventDefault()}>View Similar</button>
-          <div className="color-swatches">
-            <span className="swatch black"></span>
-            <span className="swatch grey"></span>
-          </div>
+
+          <button className="floating-cart-btn" onClick={(e) => { 
+            e.preventDefault(); 
+            addToCart(p);
+            alert(`${p.name} added to cart!`);
+          }}>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+          </button>
         </div>
       </div>
 
       <div className="card-details">
         <h3 className="brand-name">{p.brand}</h3>
-        <div className="size-badge">
-          <span className="size-char">{p.size}</span> Size
+        <h4 className="product-name">{p.name}</h4>
+        
+        <div className="tags-row">
+          <span className="tag-pill">{p.gender}</span>
+          <span className="tag-pill">{p.shape}</span>
+          <div className="size-badge" style={{ marginBottom: 0 }}>
+            <span className="size-char">{p.size}</span> Size
+          </div>
         </div>
         
         <div className="price-row">
@@ -72,5 +87,5 @@ function ProductCard({ product, is3DMode }) {
     </Link>
   );
 }
-
 export default ProductCard;
+

@@ -3,27 +3,12 @@ import { Link } from "react-router-dom";
 import "./Hero.css";
 
 const sliderData = [
-  {
-    image: "https://images.unsplash.com/photo-1577803645773-f96470509666?w=1600&q=80",
-    title: "BEACH CLUB",
-    estText: "EST.",
-    brand: "JOHN 🌴 JACOBS",
-    year: "2024"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=1600&q=80",
-    title: "VISION PERFECTED",
-    estText: "PREMIUM",
-    brand: "CRAFTED LENSES",
-    year: "EDITION"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1509695507497-903c140c43b0?w=1600&q=80",
-    title: "URBAN CHIC",
-    estText: "NEW",
-    brand: "MODERN FRAMES",
-    year: "STYLE"
-  }
+  { video: "/slider1.mp4", title: "BEACH CLUB", estText: "EST.", brand: "JOHN 🌴 JACOBS", year: "2024" },
+  { video: "/slider2.mp4", title: "VISION PERFECTED", estText: "PREMIUM", brand: "CRAFTED LENSES", year: "EDITION" },
+  { video: "/slider3.mp4", title: "URBAN CHIC", estText: "NEW", brand: "MODERN FRAMES", year: "STYLE" },
+  { video: "/slider4.mp4", title: "SUMMER VIBES", estText: "HOT", brand: "SUNGLASSES", year: "COLLECTION" },
+  { video: "/slider5.mp4", title: "CLEAR VISION", estText: "TOP", brand: "CONTACT LENSES", year: "QUALITY" },
+  { video: "/slider6.mp4", title: "KIDS FASHION", estText: "FUN", brand: "PLAYFUL FRAMES", year: "TRENDS" }
 ];
 
 function Hero() {
@@ -41,12 +26,15 @@ function Hero() {
     <section className="hero-banner">
       <div className="hero-overlay"></div>
       
-      {/* Background Image Slider */}
-      <img 
-        src={sliderData[currentSlide].image} 
-        alt="Lenskart Banner" 
+      {/* Background Video Slider */}
+      <video 
+        src={sliderData[currentSlide].video} 
         className="hero-bg" 
-        key={currentSlide} /* Force re-render of image for animation */
+        key={currentSlide} /* Force re-render of video for animation */
+        autoPlay
+        muted
+        loop
+        playsInline
       />
 
       <div className="hero-content-center" key={`content-${currentSlide}`}>
