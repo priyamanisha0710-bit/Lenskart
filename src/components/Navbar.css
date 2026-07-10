@@ -396,8 +396,8 @@
   .navbar {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto auto;
-    padding: 10px 15px 0 15px;
+    grid-template-rows: auto auto auto;
+    padding: 10px 15px 10px 15px;
     height: auto;
     row-gap: 15px;
     align-items: center;
@@ -415,11 +415,13 @@
     grid-row: 1 / 2;
   }
   .nav-right {
-    grid-column: 3 / 4;
-    grid-row: 1 / 2;
-    gap: 15px;
+    display: contents;
   }
   .nav-icons {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: flex-end;
     gap: 15px;
     font-size: 18px;
   }
@@ -430,7 +432,7 @@
     justify-content: flex-start;
     gap: 10px;
     width: 100%;
-    padding-bottom: 12px;
+    padding-bottom: 5px;
     overflow-x: auto;
     scrollbar-width: none; /* Hide scrollbar for Firefox */
   }
@@ -445,7 +447,11 @@
     letter-spacing: 0.5px;
   }
   .search-box {
-    display: none;
+    display: flex;
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 /* Category Mega Menu */
