@@ -4,7 +4,7 @@ import { FaTimes, FaCamera, FaDownload, FaSyncAlt, FaChevronLeft, FaChevronRight
 import './VirtualTryOn.css';
 import { productsData } from '../data/products';
 
-const defaultFrames = productsData.filter(p => p.type === 'eyeglasses' || !p.type).slice(0, 10);
+const defaultFrames = productsData.filter(p => p.image && typeof p.image === 'string' && p.image.startsWith('data:image/svg'));
 
 const VirtualTryOn = ({ isOpen, onClose, initialProduct }) => {
   const webcamRef = useRef(null);
