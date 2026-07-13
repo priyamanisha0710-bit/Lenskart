@@ -23,6 +23,11 @@ function Products() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    setActiveTab("All");
+    setFilters({ gender: [], brand: [], shape: [] });
+  }, [filterType]);
+
   const getCategoryStats = (type) => {
     const items = productsData.filter(p => p.type === type);
     if (!items.length) return null;

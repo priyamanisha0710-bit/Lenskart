@@ -51,7 +51,7 @@ const EyeglassCategories = () => {
       }, 100);
     }
     
-    navigate('/products');
+    navigate('/products?type=eyeglasses');
     window.scrollTo(0, 0);
   };
 

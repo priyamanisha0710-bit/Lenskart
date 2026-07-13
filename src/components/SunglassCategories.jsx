@@ -51,7 +51,7 @@ const SunglassCategories = () => {
       }, 100);
     }
     
-    navigate('/products');
+    navigate('/products?type=sunglasses');
     window.scrollTo(0, 0);
   };
 

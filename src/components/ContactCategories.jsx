@@ -49,7 +49,7 @@ const ContactCategories = () => {
       }, 100);
     }
     
-    navigate('/products');
+    navigate('/products?type=contacts');
     window.scrollTo(0, 0);
   };
 
