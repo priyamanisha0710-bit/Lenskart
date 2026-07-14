@@ -30,7 +30,7 @@ export const productsData = [
     discount: 35, 
     image: "/sun1.jpg",
     description: "Classic sunglass one.",
-    colors: ["black"]
+    colors: ["black", "red", "pink", "gold"]
   },
   { 
     id: 40, 
@@ -47,7 +47,7 @@ export const productsData = [
     discount: 28, 
     image: "/sun2.jpg",
     description: "Premium sunglass two.",
-    colors: ["gold"]
+    colors: ["gold", "black", "grey", "brown"]
   },
   { 
     id: 41, 
@@ -64,7 +64,7 @@ export const productsData = [
     discount: 25, 
     image: "/sun3.avif",
     description: "Classic sunglass three.",
-    colors: ["brown"]
+    colors: ["brown", "gold", "green", "black"]
   },
   { 
     id: 42, 
@@ -81,7 +81,7 @@ export const productsData = [
     discount: 30, 
     image: "/sun4.webp",
     description: "Premium sunglass four.",
-    colors: ["blue"]
+    colors: ["blue", "pink", "silver", "black"]
   },
   { 
     id: 43, 
@@ -98,7 +98,7 @@ export const productsData = [
     discount: 32, 
     image: "/sun5.avif",
     description: "Classic sunglass five.",
-    colors: ["grey"]
+    colors: ["grey", "red", "silver", "transparent"]
   },
   { 
     id: 44, 
@@ -115,7 +115,7 @@ export const productsData = [
     discount: 30, 
     image: "/sun6.jpg",
     description: "Premium sunglass six.",
-    colors: ["black"]
+    colors: ["black", "gold", "pink", "brown"]
   },
   { 
     id: 45, 
@@ -132,7 +132,7 @@ export const productsData = [
     discount: 34, 
     image: "/sun7.webp",
     description: "Classic sunglass seven.",
-    colors: ["red"]
+    colors: ["red", "black", "green", "pink"]
   },
   { 
     id: 1, 
@@ -149,7 +149,7 @@ export const productsData = [
     discount: 25, 
     image: perfectSVG,
     description: "Premium lightweight frame with a classic rectangular shape. Ideal for professionals and daily wear.",
-    colors: ["black", "grey"]
+    colors: ["black", "grey", "green", "brown", "blue"]
   },
   { 
     id: 2, 
@@ -166,7 +166,7 @@ export const productsData = [
     discount: 28, 
     image: roundSVG,
     description: "Ultralight transparent round frames. Perfect for a subtle, modern aesthetic without the heavy feel.",
-    colors: ["white", "blue"]
+    colors: ["white", "blue", "black", "red", "green"]
   },
   { 
     id: 3, 
@@ -183,7 +183,7 @@ export const productsData = [
     discount: 20, 
     image: rimlessSVG,
     description: "Sleek and sophisticated rimless glasses. Provides a wide field of vision with minimal weight.",
-    colors: ["grey"]
+    colors: ["grey", "brown", "black", "red"]
   },
   { 
     id: 4, 
@@ -200,7 +200,7 @@ export const productsData = [
     discount: 50, 
     image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=80",
     description: "Iconic Wayfarer style with thick frames for a bold statement. Suitable for all occasions.",
-    colors: ["black", "red"]
+    colors: ["black", "red", "gold", "brown", "transparent"]
   },
   { 
     id: 5, 
@@ -217,7 +217,7 @@ export const productsData = [
     discount: 20, 
     image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&q=80",
     description: "Unbreakable flex material suitable for sports and active lifestyles.",
-    colors: ["black"]
+    colors: ["black", "green", "transparent", "pink"]
   },
   { 
     id: 6, 
@@ -234,7 +234,7 @@ export const productsData = [
     discount: 30, 
     image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=80",
     description: "Timeless gold-rimmed aviators. Gives a premium classic vibe for both men and women.",
-    colors: ["gold", "grey"]
+    colors: ["gold", "grey", "brown", "pink", "blue"]
   },
   { 
     id: 7, 
@@ -251,7 +251,7 @@ export const productsData = [
     discount: 50, 
     image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&q=80",
     description: "Trendy cat-eye shape for a glamorous look. Available in vibrant colors.",
-    colors: ["pink", "black"]
+    colors: ["pink", "black", "blue", "silver", "grey"]
   },
   { 
     id: 8, 
@@ -268,7 +268,7 @@ export const productsData = [
     discount: 25, 
     image: ovalSVG,
     description: "Premium titanium frame that is rust-resistant and hypoallergenic.",
-    colors: ["grey"]
+    colors: ["grey", "gold", "black", "silver"]
   },
 
   { 
@@ -286,7 +286,7 @@ export const productsData = [
     discount: 23, 
     image: aviatorSVG,
     description: "Classic aviator eyeglasses for a bold retro look.",
-    colors: ["black", "gold"]
+    colors: ["black", "gold", "silver", "green", "brown"]
   },
   { 
     id: 12, 
@@ -303,7 +303,7 @@ export const productsData = [
     discount: 26, 
     image: featherSVG,
     description: "Incredibly light TR90 material for all-day comfort.",
-    colors: ["blue", "grey"]
+    colors: ["blue", "grey", "silver", "black", "gold"]
   },
   { 
     id: 13, 
@@ -320,7 +320,7 @@ export const productsData = [
     discount: 22, 
     image: miniRoundSVG,
     description: "Elegant round frames with a minimalist design.",
-    colors: ["pink", "gold"]
+    colors: ["pink", "gold", "transparent", "green", "black"]
   },
   { 
     id: 14, 
@@ -337,7 +337,7 @@ export const productsData = [
     discount: 33, 
     image: boldSquareSVG,
     description: "Thick square frames for a strong intellectual aesthetic.",
-    colors: ["black"]
+    colors: ["black", "gold", "brown", "grey"]
   },
   { 
     id: 15, 
@@ -354,7 +354,7 @@ export const productsData = [
     discount: 25, 
     image: halfRimSVG,
     description: "Sophisticated half-rim glasses made from pure titanium.",
-    colors: ["silver", "grey"]
+    colors: ["silver", "grey", "red", "brown", "transparent"]
   },
   { 
     id: 16, 
@@ -371,7 +371,7 @@ export const productsData = [
     discount: 26, 
     image: clearWayfarerSVG,
     description: "Trendy transparent wayfarer frames that match any outfit.",
-    colors: ["white"]
+    colors: ["white", "brown", "pink", "gold"]
   },
   { 
     id: 17, 
@@ -388,7 +388,7 @@ export const productsData = [
     discount: 28, 
     image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&q=80",
     description: "Vintage round sunglasses for a cool, timeless aesthetic.",
-    colors: ["black", "gold"]
+    colors: ["black", "gold", "transparent", "green", "pink"]
   },
   { 
     id: 18, 
@@ -405,7 +405,7 @@ export const productsData = [
     discount: 20, 
     image: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=600&q=80",
     description: "High-performance polarized sunglasses for outdoor activities.",
-    colors: ["black", "blue"]
+    colors: ["black", "blue", "pink", "red", "transparent"]
   },
   { 
     id: 19, 
@@ -422,7 +422,7 @@ export const productsData = [
     discount: 27, 
     image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&q=80",
     description: "Luxurious oversized sunglasses for a bold fashion statement.",
-    colors: ["brown", "black"]
+    colors: ["brown", "black", "transparent", "red", "blue"]
   },
   { 
     id: 20, 
@@ -439,7 +439,7 @@ export const productsData = [
     discount: 30, 
     image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=80",
     description: "Ultra-lightweight shield sunglasses providing maximum UV protection.",
-    colors: ["silver", "grey"]
+    colors: ["silver", "grey", "red", "brown", "green"]
   },
   { 
     id: 21, 
@@ -456,7 +456,7 @@ export const productsData = [
     discount: 28, 
     image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=80",
     description: "Classic clubmaster design with premium materials.",
-    colors: ["black", "gold"]
+    colors: ["black", "gold", "pink", "silver", "green"]
   },
   { 
     id: 22, 
@@ -473,7 +473,7 @@ export const productsData = [
     discount: 25, 
     image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&q=80",
     description: "Elegant cat-eye sunglasses with tinted gradient lenses.",
-    colors: ["pink", "black"]
+    colors: ["pink", "black", "gold", "transparent", "brown"]
   },
   { 
     id: 23, 
@@ -490,7 +490,7 @@ export const productsData = [
     discount: 25, 
     image: "/lens1.avif",
     description: "A special edition premium lens added by user request.",
-    colors: ["black", "blue"]
+    colors: ["black", "blue", "gold", "silver", "brown"]
   },
   { 
     id: 24, 
@@ -507,7 +507,7 @@ export const productsData = [
     discount: 30, 
     image: customAssetImage,
     description: "Featured product added from local assets.",
-    colors: ["grey"]
+    colors: ["grey", "blue", "transparent", "pink"]
   },
   { 
     id: 25, 
@@ -524,7 +524,7 @@ export const productsData = [
     discount: 28, 
     image: "/lens2.jpg",
     description: "New addition lens 2.",
-    colors: ["black"]
+    colors: ["black", "gold", "silver", "green"]
   },
   { 
     id: 26, 
@@ -541,7 +541,7 @@ export const productsData = [
     discount: 28, 
     image: "/lens3.jpg",
     description: "New addition lens 3.",
-    colors: ["blue"]
+    colors: ["blue", "pink", "gold", "grey"]
   },
   { 
     id: 27, 
@@ -558,7 +558,7 @@ export const productsData = [
     discount: 20, 
     image: "/lens5.png",
     description: "New addition lens 5.",
-    colors: ["red"]
+    colors: ["red", "silver", "gold", "grey"]
   },
   { 
     id: 28, 
@@ -575,7 +575,7 @@ export const productsData = [
     discount: 33, 
     image: "/lens6.jpg",
     description: "New addition lens 6.",
-    colors: ["black"]
+    colors: ["black", "silver", "gold", "pink"]
   },
   { 
     id: 29, 
@@ -592,7 +592,7 @@ export const productsData = [
     discount: 30, 
     image: "/lens8.webp",
     description: "New addition lens 8.",
-    colors: ["grey"]
+    colors: ["grey", "black", "green", "red"]
   },
   { 
     id: 30, 
@@ -609,7 +609,7 @@ export const productsData = [
     discount: 31, 
     image: "/lens9.jpg",
     description: "New addition lens 9.",
-    colors: ["blue"]
+    colors: ["blue", "gold", "brown", "red"]
   },
   { 
     id: 31, 
@@ -626,6 +626,6 @@ export const productsData = [
     discount: 26, 
     image: "/lens11.jpg",
     description: "New addition lens 11.",
-    colors: ["brown"]
+    colors: ["brown", "black", "pink", "blue"]
   }
 ];

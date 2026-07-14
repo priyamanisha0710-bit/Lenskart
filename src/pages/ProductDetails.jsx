@@ -20,9 +20,6 @@ function ProductDetails() {
   const [pendingAction, setPendingAction] = useState(null); // 'cart' or 'buy'
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const filters = ['', 'grayscale(100%)', 'sepia(100%)'];
-  const [selectedColor, setSelectedColor] = useState(product.colors && product.colors.length ? product.colors[0] : null);
-  
   // Angle states - simulating 3D views
   const angles = [
     { id: 1, transform: 'rotateY(0deg) scale(1)' },         // Front view
@@ -37,24 +34,6 @@ function ProductDetails() {
     window.scrollTo(0, 0);
   }, [id]);
 
-  const getColorFilter = (color) => {
-    if (!color) return 'none';
-    switch(color.toLowerCase()) {
-      case 'black': return 'grayscale(100%) contrast(120%) brightness(70%)';
-      case 'red': return 'sepia(100%) hue-rotate(330deg) saturate(500%)';
-      case 'blue': return 'sepia(100%) hue-rotate(190deg) saturate(500%)';
-      case 'brown': return 'sepia(100%) hue-rotate(20deg) saturate(200%) contrast(120%) brightness(80%)';
-      case 'gold': return 'sepia(100%) hue-rotate(30deg) saturate(300%) brightness(120%)';
-      case 'silver': return 'grayscale(100%) brightness(130%) contrast(90%)';
-      case 'grey': return 'grayscale(100%) brightness(100%)';
-      case 'pink': return 'sepia(100%) hue-rotate(300deg) saturate(300%) brightness(110%)';
-      case 'green': return 'sepia(100%) hue-rotate(90deg) saturate(400%)';
-      case 'transparent': return 'opacity(0.8) contrast(80%)';
-      default: return 'none';
-    }
-  };
-
-  const dynamicFilter = getColorFilter(selectedColor);
 
   if (!product) {
     return (
@@ -72,13 +51,11 @@ function ProductDetails() {
   const needsLenses = product.type === 'eyeglasses' || !product.type;
 
   const handleInitialAction = (action) => {
-    const colorParam = selectedColor ? `&color=${encodeURIComponent(selectedColor)}` : '';
-    navigate(`/select-lenses/${product.id}?action=${action}&qty=${quantity}${colorParam}`);
+    navigate(`/select-lenses/${product.id}?action=${action}&qty=${quantity}`);
   };
 
   const executeAction = (action) => {
-    const productWithColor = { ...product, selectedColor };
-    addToCart(productWithColor, quantity);
+    addToCart(product, quantity);
 
     if (action === 'buy') {
       navigate('/checkout');
@@ -112,7 +89,6 @@ function ProductDetails() {
                       width: '100%', 
                       height: '100%', 
                       objectFit: 'contain',
-                      filter: dynamicFilter,
                       transform: angle.transform,
                       transition: 'all 0.3s ease'
                     }} 
@@ -132,9 +108,8 @@ function ProductDetails() {
                      maxWidth: '95%',
                      maxHeight: '450px',
                      objectFit: 'contain',
-                     filter: dynamicFilter, 
                      transform: selectedAngle.transform,
-                     transition: 'filter 0.4s ease-in-out, transform 0.4s ease' 
+                     transition: 'transform 0.4s ease' 
                    }}
                  />
                </div>
@@ -162,22 +137,6 @@ function ProductDetails() {
               {product.description}
             </p>
 
-            <div className="color-options">
-              <h3>Available Colors:</h3>
-              <div className="swatch-list">
-                {product.colors.map((color, index) => (
-                  <span
-                    key={index}
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => setSelectedColor(color)}
-                    onKeyDown={(e) => { if (e.key === 'Enter') setSelectedColor(color); }}
-                    className={`big-swatch ${color} ${selectedColor === color ? 'selected' : ''}`}
-                    aria-label={`Select color ${color}`}
-                  ></span>
-                ))}
-              </div>
-            </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px', marginTop: '10px' }}>
               <span style={{ fontSize: '16px', fontWeight: 'bold' }}>Quantity:</span>
